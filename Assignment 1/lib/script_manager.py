@@ -55,14 +55,17 @@ class ScriptManager():
             response.Error = "Invalid Script. Script Not Found."
             return response.toJSON(), 400
 
-        strFilePath = '/uploads/' + uuid + '/' + filename
-        cmd = "docker run -it --rm -v " + UPLOAD_DIRECTORY + uuid + ":/usr/src/myapp -w /usr/src/myapp ubuntu-python3.6-rocksdb-grpc:1.0 python3 " + filename
+        strFilePath = UPLOAD_DIRECTORY + uuid + '/' + filename
+        cmd = "python " + strFilePath
+        #cmd = "docker run -it --rm -v " + UPLOAD_DIRECTORY + uuid + ":/usr/src/myapp -w /usr/src/myapp ubuntu-python3.6-rocksdb-grpc:1.0 python3 " + filename
         cmd = cmd.split()
 
-        #print(cmd)
-        output = subprocess.Popen(cmd, stdout=subprocess.PIPE, universal_newlines=True)
-        #print(output.stdout.read())
-        return output.stdout.read()
+        sp = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        out, err = sp.communicate()
+        if err:
+            return err.strip('\n')
+
+        return out.strip('\n')
 
     def get_file_object(self,request):
         """

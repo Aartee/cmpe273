@@ -8,6 +8,22 @@ message ResponseStream {
     string value = 2;
 }
 
+message PutRequest {
+    string key = 1;
+    string value = 2;
+}
+
+message GetRequest {
+    string key = 1;
+}
+
+message GetPutResponse {
+    string key = 1;
+    string value = 2;
+}
+
 service Datastore {
    rpc startReplication(Request) returns (stream ResponseStream) {}
+   rpc putData(PutRequest) returns (GetPutResponse) {}
+   rpc getData(GetRequest) returns (GetPutResponse) {}
 }

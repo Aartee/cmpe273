@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='datastore.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x64\x61tastore.proto\"\t\n\x07Request\",\n\x0eResponseStream\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t2>\n\tDatastore\x12\x31\n\x10startReplication\x12\x08.Request\x1a\x0f.ResponseStream\"\x00\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x64\x61tastore.proto\"\t\n\x07Request\",\n\x0eResponseStream\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"(\n\nPutRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x19\n\nGetRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\",\n\x0eGetPutResponse\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t2\x94\x01\n\tDatastore\x12\x31\n\x10startReplication\x12\x08.Request\x1a\x0f.ResponseStream\"\x00\x30\x01\x12)\n\x07putData\x12\x0b.PutRequest\x1a\x0f.GetPutResponse\"\x00\x12)\n\x07getData\x12\x0b.GetRequest\x1a\x0f.GetPutResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -86,8 +86,118 @@ _RESPONSESTREAM = _descriptor.Descriptor(
   serialized_end=74,
 )
 
+
+_PUTREQUEST = _descriptor.Descriptor(
+  name='PutRequest',
+  full_name='PutRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='PutRequest.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='PutRequest.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=76,
+  serialized_end=116,
+)
+
+
+_GETREQUEST = _descriptor.Descriptor(
+  name='GetRequest',
+  full_name='GetRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='GetRequest.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=118,
+  serialized_end=143,
+)
+
+
+_GETPUTRESPONSE = _descriptor.Descriptor(
+  name='GetPutResponse',
+  full_name='GetPutResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='GetPutResponse.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='GetPutResponse.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=145,
+  serialized_end=189,
+)
+
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['ResponseStream'] = _RESPONSESTREAM
+DESCRIPTOR.message_types_by_name['PutRequest'] = _PUTREQUEST
+DESCRIPTOR.message_types_by_name['GetRequest'] = _GETREQUEST
+DESCRIPTOR.message_types_by_name['GetPutResponse'] = _GETPUTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
@@ -104,6 +214,27 @@ ResponseStream = _reflection.GeneratedProtocolMessageType('ResponseStream', (_me
   ))
 _sym_db.RegisterMessage(ResponseStream)
 
+PutRequest = _reflection.GeneratedProtocolMessageType('PutRequest', (_message.Message,), dict(
+  DESCRIPTOR = _PUTREQUEST,
+  __module__ = 'datastore_pb2'
+  # @@protoc_insertion_point(class_scope:PutRequest)
+  ))
+_sym_db.RegisterMessage(PutRequest)
+
+GetRequest = _reflection.GeneratedProtocolMessageType('GetRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETREQUEST,
+  __module__ = 'datastore_pb2'
+  # @@protoc_insertion_point(class_scope:GetRequest)
+  ))
+_sym_db.RegisterMessage(GetRequest)
+
+GetPutResponse = _reflection.GeneratedProtocolMessageType('GetPutResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETPUTRESPONSE,
+  __module__ = 'datastore_pb2'
+  # @@protoc_insertion_point(class_scope:GetPutResponse)
+  ))
+_sym_db.RegisterMessage(GetPutResponse)
+
 
 
 _DATASTORE = _descriptor.ServiceDescriptor(
@@ -112,8 +243,8 @@ _DATASTORE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=76,
-  serialized_end=138,
+  serialized_start=192,
+  serialized_end=340,
   methods=[
   _descriptor.MethodDescriptor(
     name='startReplication',
@@ -122,6 +253,24 @@ _DATASTORE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_REQUEST,
     output_type=_RESPONSESTREAM,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='putData',
+    full_name='Datastore.putData',
+    index=1,
+    containing_service=None,
+    input_type=_PUTREQUEST,
+    output_type=_GETPUTRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='getData',
+    full_name='Datastore.getData',
+    index=2,
+    containing_service=None,
+    input_type=_GETREQUEST,
+    output_type=_GETPUTRESPONSE,
     options=None,
   ),
 ])

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Request{
+}
+
+message ResponseStream {
+    string key = 1;
+    string value = 2;
+}
+
+service Datastore {
+   rpc startReplication(Request) returns (stream ResponseStream) {}
+}

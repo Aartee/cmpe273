@@ -24,8 +24,21 @@ class DatastoreClient():
         response = self.stub.putData(datastore_pb2.PutRequest(key=key, value=value))
         return response
 
+    def get(self, key):
+        '''
+        '''
+        response = self.stub.getData(datastore_pb2.GetRequest(key=key))
+        return response
 
 client = DatastoreClient()
 
-response = client.put("1", "Data1")
+
+response = client.get("1")
 print(response.key, response.value)
+
+response = client.put("1", "Data20")
+print(response.key, response.value)
+
+response = client.get("1")
+print(response.key, response.value)
+

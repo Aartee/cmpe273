@@ -62,13 +62,15 @@ class MyDatastoreServicer(datastore_pb2_grpc.DatastoreServicer):
         Insert/Update data in RocksDB
         '''
         print(request)
+        self.db.put(request.key, request.value)
         return datastore_pb2.GetPutResponse(key=request.key, value=request.value)
 
     def getData(self, request, context):
         '''
         Get Data from RocksDB
         '''
-        return datastore_pb2.GetPutResponse(key="key", value="value")
+        value = self.db.get(request.key)
+        return datastore_pb2.GetPutResponse(key=request.key, value=value)
 
 
 def run(host, port):

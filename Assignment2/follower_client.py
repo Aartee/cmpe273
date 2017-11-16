@@ -28,6 +28,7 @@ class DatastoreClient():
         resp = self.stub.startReplication(datastore_pb2.Request())
         for data in resp:
             print(data.key, data.value)
+            self.db.put(data.key, data.value)
 
 
 if len(sys.argv) == 2:

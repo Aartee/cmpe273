@@ -6,6 +6,10 @@
 import grpc
 import datastore_pb2
 import datastore_pb2_grpc
+import sys
+
+Key = ""
+Value = ""
 
 class DatastoreClient():
     '''
@@ -21,6 +25,7 @@ class DatastoreClient():
     def put(self, key, value):
         '''
         '''
+        print("Pushing Data to Master Database...")
         response = self.stub.putData(datastore_pb2.PutRequest(key=key, value=value))
         return response
 
@@ -30,15 +35,14 @@ class DatastoreClient():
         response = self.stub.getData(datastore_pb2.GetRequest(key=key))
         return response
 
+if len(sys.argv) == 3:
+    Key = sys.argv[1]
+    Value = sys.argv[2]
+else:
+    print("Invalid Arguments. Usage: pushData.py <key> <value>")
+    exit()
+
 client = DatastoreClient()
 
-
-response = client.get("1")
+response = client.put(Key, Value)
 print(response.key, response.value)
-
-response = client.put("1", "Data20")
-print(response.key, response.value)
-
-response = client.get("1")
-print(response.key, response.value)
-
